@@ -10,7 +10,13 @@ async function bootstrap() {
   app.useGlobalPipes(
     new ValidationPipe({
     whitelist: true,
-    forbidNonWhitelisted: true, })
+    forbidNonWhitelisted: true,
+    // Transforma los params automaticamente a las instancias del DTO
+    transform: true,
+    transformOptions: {
+      enableImplicitConversion: true,
+    },
+  })
   );
 
   await app.listen(3000);
